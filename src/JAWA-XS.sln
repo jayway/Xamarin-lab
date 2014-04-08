@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAWA", "JAWA\JAWA.csproj", "{EEA55C14-859C-401D-9441-7BB764A9B95D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAWA-XS", "JAWA\JAWA-XS.csproj", "{EEA55C14-859C-401D-9441-7BB764A9B95D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,6 @@ Global
 		{EEA55C14-859C-401D-9441-7BB764A9B95D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = JAWA\JAWA.csproj
+		StartupItem = JAWA\JAWA-XS.csproj
 	EndGlobalSection
 EndGlobal
