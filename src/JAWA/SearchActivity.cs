@@ -19,105 +19,76 @@ namespace JAWA
 	public class SearchActivity : Activity
 	{
 
-//		private ListView mListView;
-//		private EditText mEditText;
-//
-//		public void onCreate(Bundle savedInstanceState) {
-//			super.onCreate(savedInstanceState);
-//			setContentView(R.layout.activity_search);
-//
-//			mListView = (ListView) findViewById(R.id.ListView01);
-//			mListView.setOnItemClickListener(new OnItemClickListener() {
-//				@Override
-//				public void onItemClick(AdapterView<?> list, View itemView,
-//					int position, long id) {
-//					WeatherLocation item = (WeatherLocation) mListView.getAdapter()
-//						.getItem(position);   
-//					WeatherApplication application = (WeatherApplication) getApplication();
-//					WeatherRepo weatherRepo = application.getWeatherRepo();
-//					weatherRepo.addLocation(item);
-//					finish();
-//				}
-//			});
-//
-//			mEditText = (EditText) findViewById(R.id.EditText01);
-//			mEditText.addTextChangedListener(new SearchTextListener());
-//
-//			getActionBar().setHomeButtonEnabled(true);
-//			getActionBar().setDisplayHomeAsUpEnabled(true);
-//		}
-//
-//		@Override
-//		public boolean onOptionsItemSelected(MenuItem menuItem) {
-//			switch (menuItem.getItemId()) {
-//			case android.R.id.home:
-//				finish();
-//				return true;
-//			}
-//			return (super.onOptionsItemSelected(menuItem));
-//		}
-//
-//		private class SearchTextListener implements TextWatcher {
-//		// XAMARIN: In c# you have to make SearchTextListener inherit Java.Lang.Object
-//		// XAMARIN: inner classes in java can access outer classes private members, i C# you have add the ListView and SearchActivity in e.g the contructor of SearchTextListener 
-//
-//
-//			SearchLocation prevLocation;
-//
-//			@Override
-//			public void afterTextChanged(Editable s) {
-//			}
-//
-//			@Override
-//			public void beforeTextChanged(CharSequence s, int start, int count,
-//				int after) {
-//			}
-//
-//			@Override
-//			public void onTextChanged(CharSequence s, int start, int before,
-//				int count) {
-//				if (s.length() > 2) {
-//		//XAMARIN: skip the cancel functionality if you want, its ok to use a simple await and skip a helper class like SearchLocation
-		//         just look at the code in doInBackground & onPostExecute in the SearchLocation AsyncTask 
+		private ListView mListView;
+		private EditText mEditText;
 
-//					if (prevLocation != null)
-//						prevLocation.cancel(true);
-//					prevLocation = new SearchLocation(SearchActivity.this,
-//						mListView);
-//					prevLocation.execute(s.toString());
-//				}
-//
-//			}
-//
-//		}
-//		public class SearchLocation extends AsyncTask<String, Void, ArrayList<WeatherLocation>> {
-//
-//			private ListView mListView;
-//
-//			private Activity mActivity;
-//
-//			public SearchLocation(Activity activity, ListView listView) {
-//				this.mActivity = activity;
-//				this.mListView = listView;
-//			}
-//
-//			@Override
-//			protected ArrayList<WeatherLocation> doInBackground(String... params) {
-//				OWMApi api = new OWMApi();
-//				ArrayList<WeatherLocation> result = api.search(params[0]);
-//
-//				return result;
-//			}
-//
-//			@Override
-//			protected void onPostExecute(ArrayList<WeatherLocation> result) {
-//		//XAMARIN: you may have to use the JavaObjectWrapper
-//		//         var wrapresult = result.Select ((w) => new JavaObjectWrapper<WeatherLocation>(w)).ToList();
-//
-//				mListView.setAdapter(new ArrayAdapter<WeatherLocation>(mActivity,
-//					android.R.layout.simple_list_item_1, result));
-//			}
-//		}
+
+
+
+		protected override void OnCreate (Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
+			SetContentView(Resource.Layout.activity_search);
+
+			mListView = (ListView) FindViewById(Resource.Id.ListView01);
+			mListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
+				var item =  mListView.Adapter.GetItem(e.Position).JavaCast<JavaObjectWrapper<WeatherLocation>>().Item;
+				var weatherRepo = WeatherApplication.Instance.GetWeatherRepo();
+				weatherRepo.AddLocation(item);
+				Finish();
+			};
+
+			mEditText = (EditText) FindViewById(Resource.Id.EditText01);
+			mEditText.AddTextChangedListener(new SearchTextListener (mListView, this));
+
+			ActionBar.SetHomeButtonEnabled(true);
+			ActionBar.SetDisplayHomeAsUpEnabled (true);
+		}
+
+
+		public override bool OnOptionsItemSelected (IMenuItem menuItem)
+		{
+			switch (menuItem.ItemId) {
+			case Android.Resource.Id.Home:
+				Finish();
+				return true;
+			}
+			return base.OnOptionsItemSelected (menuItem);
+		} 
+
+
+
+		private class SearchTextListener : Java.Lang.Object, ITextWatcher 
+		{
+			private ListView mListView;
+			private Activity mActivity;
+			public SearchTextListener(ListView listView, Activity activity)
+			{
+				mListView = listView;
+				mActivity = activity;
+			}
+
+			public void AfterTextChanged (IEditable s)
+			{
+			}
+
+			public void BeforeTextChanged (Java.Lang.ICharSequence s, int start, int count, int after)
+			{
+			}
+
+			public async void OnTextChanged (Java.Lang.ICharSequence s, int start, int before, int count)
+			{
+				if (s.Length() > 2) {
+					//TODO: Add cancel support
+					var api = new OWMApi();
+					var result = await api.Search (s.ToString());
+					var wrapresult = result.Select ((w) => new JavaObjectWrapper<WeatherLocation>(w)).ToList();
+
+					mListView.Adapter = new ArrayAdapter<JavaObjectWrapper<WeatherLocation>>(mActivity, Android.Resource.Layout.SimpleListItem1, wrapresult);
+				}
+
+			}
+		}
 	}
 }
 
