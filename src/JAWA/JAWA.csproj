@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EEA55C14-859C-401D-9441-7BB764A9B95D}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>JAWA</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>JAWA</AssemblyName>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="WeatherApp.Shared">
+      <HintPath>..\libs\WeatherApp.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\WeatherApplication.cs" />
+    <Compile Include="Helpers\WeatherPreferences.cs" />
+    <Compile Include="SearchActivity.cs" />
+    <Compile Include="MainWeatherAdapter.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Helpers\IconConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\layout\main.xml" />
+    <AndroidResource Include="Resources\values\style.xml" />
+    <AndroidResource Include="Resources\layout\header_bg.axml" />
+    <AndroidResource Include="Resources\menu\main_activity_option_menu.axml" />
+    <AndroidResource Include="Resources\layout\activity_search.axml" />
+    <AndroidResource Include="Resources\layout\item_weather.axml" />
+    <AndroidResource Include="Resources\drawable\card_background.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0000_01.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0001_02.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0002_03.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0003_04.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0004_05.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0005_06.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0006_07.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0007_08.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0008_09.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0009_10.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0010_11.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0011_12.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0012_13.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0013_14.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0014_15.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0015_16.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0016_17.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0017_18.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0018_19.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0019_20.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0020_21.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0021_22.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0022_23.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0023_24.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0024_25.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0025_26.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0026_27.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0027_28.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0028_29.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0029_30.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0030_31.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0031_32.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0032_33.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0033_34.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0034_35.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0035_36.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0036_37.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0037_38.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0038_39.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0039_40.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0040_41.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0041_42.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0042_43.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0043_44.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0044_45.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0045_46.png" />
+    <AndroidResource Include="Resources\drawable\weathericons_0046_47.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Resources\menu\" />
+  </ItemGroup>
+</Project>

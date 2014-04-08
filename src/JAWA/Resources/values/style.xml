@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Holo.Light"/>
+
+    <style name="TextAppearance.Large.Light" parent="android:TextAppearance.Large">
+    </style>
+
+    <style name="TextAppearance.Large" parent="android:TextAppearance.Large">
+    </style>
+</resources>
