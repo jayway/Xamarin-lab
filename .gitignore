@@ -15,7 +15,7 @@ External
 *.xccheckout
 
 native-android/.metadata/*
-
+Resource.designer.cs
 
 #################
 ## Visual Studio
